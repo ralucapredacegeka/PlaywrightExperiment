@@ -28,7 +28,7 @@ namespace Core
         private static async Task<IPage> GoToAsync(string url)
         {
             var playwright = await Playwright.CreateAsync();
-            var browser = await playwright.Firefox.LaunchAsync(new BrowserTypeLaunchOptions
+            var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
             {
                 Headless = false,
                 SlowMo = 500,
