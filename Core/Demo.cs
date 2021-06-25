@@ -5,6 +5,8 @@ namespace Core
 {
     public class Demo
     {
+        static string screenshotPath = "screenshot.png";
+        
         public static async Task TestPlay()
         {
             using var playwright = await Playwright.CreateAsync();
@@ -17,10 +19,13 @@ namespace Core
                 });
             var page = await browser.NewPageAsync();
             await page.GotoAsync("https://playwright.dev/dotnet");
-            await page.ScreenshotAsync(new PageScreenshotOptions { Path = "screenshot.png" });
+            await page.ScreenshotAsync(new PageScreenshotOptions { Path = screenshotPath });
         }
 
-        public static async Task<IPage> GoTo(string url)
+        /// <summary>
+        /// Creates broqser context and goes to page
+        /// </summary>
+        private static async Task<IPage> GoToAsync(string url)
         {
             var playwright = await Playwright.CreateAsync();
             var browser = await playwright.Firefox.LaunchAsync(new BrowserTypeLaunchOptions
@@ -40,11 +45,35 @@ namespace Core
             return page;
         }
 
-        public static async Task<IPage> ClickText(IPage page, string text)
+        public static Page GoTo(string url)
         {
-            await page.ClickAsync("text=" + text);
-            return page;
+            var page = GoToAsync(url).Result;
+            return new Page(page);
         }
+
+        //public static async Task<IPage> ClickText(IPage page, string text)
+        //{
+        //    await page.ClickAsync("text=" + text);
+        //    return page;
+        //}
+
+        //public static async Task<IPage> Click(IPage page, string selector)
+        //{
+        //    await page.ClickAsync(selector);
+        //    return page;
+        //}
+
+        //public static async Task<IPage> Fill(IPage page, string selector, string value)
+        //{
+        //    await page.FillAsync(selector, value);
+        //    return page;
+        //}
+
+        //public void TakeScreenshot(IPage page)
+        //{
+        //    var task = page.ScreenshotAsync(new PageScreenshotOptions { Path = screenshotPath });
+        //    task.GetAwaiter().GetResult();
+        //}
 
         //public static async Task TestEmag()
         //{
