@@ -4,27 +4,10 @@ using System.Threading.Tasks;
 
 namespace Core
 {
-
    public class QPark
     {
         public static async Task QparkTest()
         {
-                        
-            // Go to https://uk-acc-website-azure.q-park.com/en-gb/
-            var page = Demo.GoTo("https://uk-acc-website-azure.q-park.com/en-gb/").Result;
-
-
-            // Click a[role="tab"]:has-text("Pre-booking")
-            await page.ClickAsync("a[role=\"tab\"]:has-text(\"Pre-booking\")");
-
-
-            // Click text=Where do you want to go? (Enter landmark, postcode, street, shop, etc.) Select y >> [placeholder="Search a city or address"]
-            //await page.ClickAsync("input[placeholder=\"Search a city or address\"]");
-
-            // Fill text=Where do you want to go? (Enter landmark, postcode, street, shop, etc.) Select y >> [placeholder="Search a city or address"]
-            await page.FillAsync("[id='pre-booking'] >> input[placeholder=\"Search a city or address\"]", "Glasgow");
-            // Click div[role="tabpanel"] >> text=Glasgow, UK Glasgow Fort, M8, Glasgow, UK Glasgow Royal Infirmary, Castle Street >> div
-            await page.ClickAsync("[id='pre-booking'] >> text=Glasgow, UK");
 
 
             //    // Click text=Select your arrival date and time Start date is required hh:mm12:3013:0013:3014: >> input[type="text"]
@@ -179,7 +162,7 @@ namespace Core
             //    // Click text=Sauchie Fixed addon
             //    await page.ClickAsync("text=Sauchie Fixed addon");
 
-            await page.ScreenshotAsync(new PageScreenshotOptions { Path = @"C:\Users\roxanadn\source\repos\PlaywrightExperiment\PlaywrightTests\Screenshots\screenshot.png" });
+            //await page.ScreenshotAsync(new PageScreenshotOptions { Path = @"C:\Users\roxanadn\source\repos\PlaywrightExperiment\PlaywrightTests\Screenshots\screenshot.png" });
         }
     }
 

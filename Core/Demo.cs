@@ -45,35 +45,10 @@ namespace Core
             return page;
         }
 
-        public static Page GoTo(string url)
+        public static IPage GoTo(string url) 
         {
-            var page = GoToAsync(url).Result;
-            return new Page(page);
+            return GoToAsync(url).Result;
         }
-
-        //public static async Task<IPage> ClickText(IPage page, string text)
-        //{
-        //    await page.ClickAsync("text=" + text);
-        //    return page;
-        //}
-
-        //public static async Task<IPage> Click(IPage page, string selector)
-        //{
-        //    await page.ClickAsync(selector);
-        //    return page;
-        //}
-
-        //public static async Task<IPage> Fill(IPage page, string selector, string value)
-        //{
-        //    await page.FillAsync(selector, value);
-        //    return page;
-        //}
-
-        //public void TakeScreenshot(IPage page)
-        //{
-        //    var task = page.ScreenshotAsync(new PageScreenshotOptions { Path = screenshotPath });
-        //    task.GetAwaiter().GetResult();
-        //}
 
         //public static async Task TestEmag()
         //{

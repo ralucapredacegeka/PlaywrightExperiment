@@ -32,14 +32,14 @@ namespace Core
             return this;
         }
 
-        public Page Fill( string selector, string value)
+        public Page Fill(string selector, string value)
         {
             var task = page.FillAsync(selector, value);
             task.GetAwaiter().GetResult();
             return this;
         }
 
-        public void TakeScreenshot(IPage page)
+        public void TakeScreenshot()
         {
             var task = page.ScreenshotAsync(new PageScreenshotOptions { Path = screenshotPath });
             task.GetAwaiter().GetResult();
