@@ -1,5 +1,4 @@
 ﻿using Microsoft.Playwright;
-using System.Threading.Tasks;
 
 namespace Core
 {
@@ -7,11 +6,6 @@ namespace Core
     {
         static string screenshotPath = "screenshot.png";
         public static IPage page;
-
-        //public IPage GetPage()
-        //{
-        //    return _page;
-        //}
 
         public Page(IPage page)
         {
@@ -44,6 +38,5 @@ namespace Core
             var task = page.ScreenshotAsync(new PageScreenshotOptions { Path = screenshotPath });
             task.GetAwaiter().GetResult();
         }
-
     }
 }

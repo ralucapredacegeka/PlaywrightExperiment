@@ -1,9 +1,4 @@
 ﻿using Microsoft.Playwright;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Pages
 {
@@ -13,7 +8,7 @@ namespace Core.Pages
         {
         }
 
-        public Parking(IPage p) : base (p)
+        public Parking(IPage p) : base(p)
         {
         }
 
@@ -41,10 +36,10 @@ namespace Core.Pages
             return this;
         }
 
-        public Parking SetDate() 
+        public Parking SetDate()
         { return this; }
 
-        public Parking ClickSubmit() 
+        public Parking ClickSubmit()
         { return this; }
 
     }
