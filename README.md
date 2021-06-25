@@ -7,4 +7,4 @@ Steps to get the repo:
 1. Run in cmd: dotnet tool install --global Microsoft.Playwright.CLI
 1. Get repo from: https://github.com/ralucapredacegeka/PlaywrightExperiment
 1. Open Command-Prompt and change directory to your repo location "cd c:\users\..."
-Run1. mmand: "playwright install"
+1. Run command: "playwright install"
