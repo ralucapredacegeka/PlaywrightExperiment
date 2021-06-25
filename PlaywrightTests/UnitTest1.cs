@@ -38,7 +38,6 @@ namespace PlaywrightTests
         [Test]
         public void ShouldQPark()
         {
-            // Go to https://uk-acc-website-azure.q-park.com/en-gb/
             var page = Demo.GoTo("https://uk-acc-website-azure.q-park.com/en-gb/");
             Parking parkingPage = new Parking(page);
 
@@ -47,23 +46,8 @@ namespace PlaywrightTests
                 .FillLocation("Glasgow")
                 .SelectLocation("Glasgow, UK");
 
-            // Click a[role="tab"]:has-text("Pre-booking")
-            //page.Click("a[role=\"tab\"]:has-text(\"Pre-booking\")");
-
-            //// Fill text=Where do you want to go? (Enter landmark, postcode, street, shop, etc.) Select y >> [placeholder="Search a city or address"]
-            //page.Fill("[id='pre-booking'] >> input[placeholder=\"Search a city or address\"]", "Glasgow");
-
-            //// Click div[role="tabpanel"] >> text=Glasgow, UK Glasgow Fort, M8, Glasgow, UK Glasgow Royal Infirmary, Castle Street >> div
-            //page.Click("[id='pre-booking'] >> text=Glasgow, UK");
-
             parkingPage.TakeScreenshot();
 
-        }
-
-        [Test]
-        public async Task ShouldQPark()
-        { 
-           await QPark.QparkTest();
         }
     }
 }
