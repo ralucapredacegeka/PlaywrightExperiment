@@ -59,5 +59,11 @@ namespace PlaywrightTests
             parkingPage.TakeScreenshot();
 
         }
+
+        [Test]
+        public async Task ShouldQPark()
+        { 
+           await QPark.QparkTest();
+        }
     }
 }
