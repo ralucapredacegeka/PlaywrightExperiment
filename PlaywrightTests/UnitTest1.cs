@@ -33,5 +33,11 @@ namespace PlaywrightTests
             Assert.AreEqual("https://www.emag.ro/televizoare/filter/claritate-imagine-f9180,4k-v-8182405/c?ref=hp_menu_quick-nav_190_3&type=filter", page.Url);
 
         }
+
+        [Test]
+        public async Task ShouldQPark()
+        { 
+           await QPark.QparkTest();
+        }
     }
 }
