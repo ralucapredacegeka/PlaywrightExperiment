@@ -33,6 +33,13 @@ namespace Core
             return this;
         }
 
+        public bool IsVisible(string selector)
+        {
+            var task = page.ClickAsync(selector);
+            task.GetAwaiter().GetResult();
+            return page.IsVisibleAsync(selector).Result;
+        }
+
         public void TakeScreenshot()
         {
             var task = page.ScreenshotAsync(new PageScreenshotOptions { Path = screenshotPath });
