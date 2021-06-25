@@ -5,14 +5,27 @@ namespace Core
 {
     public class Demo
     {
+        static string screenshotPath = "screenshot.png";
+        
         public static async Task TestPlay()
         {
-            
-            var page = GoTo("https://playwright.dev/dotnet").Result;
-            await page.ScreenshotAsync(new PageScreenshotOptions { Path = "screenshot.png" });
+            using var playwright = await Playwright.CreateAsync();
+            await using var browser
+                //= await playwright.Chromium.LaunchAsync();
+                = await playwright.Firefox.LaunchAsync(new BrowserTypeLaunchOptions
+                {
+                    Headless = false,
+                    SlowMo = 500,
+                });
+            var page = await browser.NewPageAsync();
+            await page.GotoAsync("https://playwright.dev/dotnet");
+            await page.ScreenshotAsync(new PageScreenshotOptions { Path = screenshotPath });
         }
 
-        public static async Task<IPage> GoTo(string url)
+        /// <summary>
+        /// Creates broqser context and goes to page
+        /// </summary>
+        private static async Task<IPage> GoToAsync(string url)
         {
             var playwright = await Playwright.CreateAsync();
             var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
@@ -32,10 +45,9 @@ namespace Core
             return page;
         }
 
-        public static async Task<IPage> ClickText(IPage page, string text)
+        public static IPage GoTo(string url) 
         {
-            await page.ClickAsync("text=" + text);
-            return page;
+            return GoToAsync(url).Result;
         }
 
         //public static async Task TestEmag()

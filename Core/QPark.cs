@@ -179,7 +179,7 @@ namespace Core
             //    // Click text=Sauchie Fixed addon
             //    await page.ClickAsync("text=Sauchie Fixed addon");
 
-            await page.ScreenshotAsync(new PageScreenshotOptions { Path = @"C:\Users\roxanadn\source\repos\PlaywrightExperiment\PlaywrightTests\Screenshots\screenshot.png" });
+            //await page.ScreenshotAsync(new PageScreenshotOptions { Path = @"C:\Users\roxanadn\source\repos\PlaywrightExperiment\PlaywrightTests\Screenshots\screenshot.png" });
         }
     }
 
