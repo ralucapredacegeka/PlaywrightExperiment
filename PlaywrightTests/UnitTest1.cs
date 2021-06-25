@@ -1,21 +1,20 @@
-using System.Threading.Tasks;
-using Microsoft.Playwright.NUnit;
-using NUnit.Framework;
 using Core;
 using Core.Pages;
+using Microsoft.Playwright.NUnit;
+using NUnit.Framework;
 
 namespace PlaywrightTests
 {
     [Parallelizable(ParallelScope.Self)]
     public class Tests : PageTest
     {
-        [Test]
-        public async Task ShouldAdd()
-        {
-            await Core.Demo.TestPlay();
-            int result = await Page.EvaluateAsync<int>("() => 7 + 3");
-            Assert.AreEqual(10, result);
-        }
+        //[Test]
+        //public async Task ShouldAdd()
+        //{
+        //    await Core.Demo.TestPlay();
+        //    int result = await Page.EvaluateAsync<int>("() => 7 + 3");
+        //    Assert.AreEqual(10, result);
+        //}
 
         //[Test]
         //public async Task Emag()
@@ -44,7 +43,14 @@ namespace PlaywrightTests
             parkingPage
                 .ClickPreBooking()
                 .FillLocation("Glasgow")
-                .SelectLocation("Glasgow, UK");
+                .SelectLocation("Glasgow, UK")
+                .SetStartDate("26/06/2021")
+                .SetStartTime("00:00")
+                .SetEndDate("28/06/2021")
+                .SetEndTime("00:00")
+                .ClickSearch();
+
+            Assert.IsTrue(parkingPage.IsVisible("[aria-label='Map']"));
 
             parkingPage.TakeScreenshot();
 

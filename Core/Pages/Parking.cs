@@ -36,11 +36,35 @@ namespace Core.Pages
             return this;
         }
 
-        public Parking SetDate()
-        { return this; }
+        public Parking SetStartDate(string date)
+        {
+            Fill($"{panelSelector} >> xpath=//input[contains(@class,'startDatePicker')]", date); 
+            return this;
+        }
 
-        public Parking ClickSubmit()
-        { return this; }
+        public Parking SetStartTime(string time)
+        {
+            Fill($"{panelSelector} >> xpath=//input[contains(@class,'startTimePickerDesktop')]", time);
+            return this;
+        }
+
+        public Parking SetEndDate(string date)
+        {
+            Fill($"{panelSelector} >> xpath=//input[contains(@class,'endDatePicker') and @type='text']", date);
+            return this;
+        }
+
+        public Parking SetEndTime(string time)
+        {
+            Fill($"{panelSelector} >> xpath=//input[contains(@class,'endTimePickerDesktop')]", time);            
+            return this;
+        }
+
+        public Parking ClickSearch()
+        {
+            Click($"{panelSelector} >> button[type='submit']");
+            return this; 
+        }
 
     }
 }
