@@ -7,23 +7,15 @@ namespace Core
     {
         public static async Task TestPlay()
         {
-            using var playwright = await Playwright.CreateAsync();
-            await using var browser
-                //= await playwright.Chromium.LaunchAsync();
-                = await playwright.Firefox.LaunchAsync(new BrowserTypeLaunchOptions
-                {
-                    Headless = false,
-                    SlowMo = 500,
-                });
-            var page = await browser.NewPageAsync();
-            await page.GotoAsync("https://playwright.dev/dotnet");
+            
+            var page = GoTo("https://playwright.dev/dotnet").Result;
             await page.ScreenshotAsync(new PageScreenshotOptions { Path = "screenshot.png" });
         }
 
         public static async Task<IPage> GoTo(string url)
         {
             var playwright = await Playwright.CreateAsync();
-            var browser = await playwright.Firefox.LaunchAsync(new BrowserTypeLaunchOptions
+            var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
             {
                 Headless = false,
                 SlowMo = 500,
